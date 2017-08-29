@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/BootJournal.iml" filepath="$PROJECT_DIR$/.idea/modules/BootJournal.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/BootJournal_main.iml" filepath="$PROJECT_DIR$/.idea/modules/BootJournal_main.iml" group="BootJournal" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/BootJournal_test.iml" filepath="$PROJECT_DIR$/.idea/modules/BootJournal_test.iml" group="BootJournal" />
+    </modules>
+  </component>
+</project>

@@ -1,0 +1,9 @@
+[package]
+name = "mytest"
+version = "0.1.0"
+authors = ["joe"]
+
+[dependencies]
+primal = { git = "https://github.com/huonw/primal.git" }
+#winapi = { git = "http://github.com/retep998/winapi-rs.git" }
+#rand = { git = "http://github.com/rust-lang-nursery/rand.git" }
