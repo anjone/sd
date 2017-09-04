@@ -36,20 +36,48 @@ def callback(hwnd, childList):
         childList.append(hwnd)
 
 def getAllIEChildrenWindows():
-    handle = win32gui.FindWindow('IEFrame', None)
+    #handle = win32gui.FindWindow('IEFrame', None)
+    handle = win32gui.FindWindow('360se6_Frame', None)
     print(handle)
     
     win32gui.EnumChildWindows(handle, callback, childList)
 
     for ch in childList:
         print(win32gui.GetClassName(ch))
+        print(win32gui.GetWindowText(ch))
         if ('Internet Explorer_Server' == win32gui.GetClassName(ch)):
+
+            innerChildList = []
+            win32gui.EnumChildWindows(ch, callback, innerChildList)
+            for ich in innerChildList:
+                print("-------------------------------------------------------------")
+                print(win32gui.GetClassName(ich))
+                print(win32gui.GetWindowText(ich))
+                if('SunAwtCanvas' == win32gui.GetClassName(ich)):
+                    msg = win32gui.RegisterWindowMessage("WM_HTML_GETOBJECT")
+                    rc, result = win32gui.SendMessageTimeout(ich, msg, 0, 0, win32con.SMTO_ABORTIFHUNG, 1000)
+                    ob = pythoncom.ObjectFromLresult(result, pythoncom.IID_IDispatch, 0)
+                    doc = Dispatch(ob)
+                    print(doc.body.innerHtml)
+                print("-------------------------------------------------------------")
+            
             print(ch)
             msg = win32gui.RegisterWindowMessage("WM_HTML_GETOBJECT")
             rc, result = win32gui.SendMessageTimeout(ch, msg, 0, 0, win32con.SMTO_ABORTIFHUNG, 1000)
             ob = pythoncom.ObjectFromLresult(result, pythoncom.IID_IDispatch, 0)
             doc = Dispatch(ob)
+            #print(doc.body.innerHtml)
             print(doc.body.innerHtml)
+
+            while(doc.body.innerHtml.find("18923238393") == -1):
+                msg = win32gui.RegisterWindowMessage("WM_HTML_GETOBJECT")
+                rc, result = win32gui.SendMessageTimeout(ch, msg, 0, 0, win32con.SMTO_ABORTIFHUNG, 1000)
+                ob = pythoncom.ObjectFromLresult(result, pythoncom.IID_IDispatch, 0)
+                doc = Dispatch(ob)
+
+            print(doc.body.innerHtml)
+            
+            
             doc.all['userCode'].value='zhangxinxin-006'
             doc.all['password'].value='Tbkfxt@1234'
             doc.all['login'].click()
@@ -58,6 +86,20 @@ def getAllIEChildrenWindows():
                 doc.bgColor = color
                 time.sleep(0.2)
 
+
+        if ('WorkerW' == win32gui.GetClassName(ch)):
+            print(ch)
+
+def inner_callback(chwnd, params):
+    print(win32gui.GetClassName(ch))
+    #return True
+
+def getAllChildrenWindows():
+    handle = win32gui.FindWindow('IEFrame', None)
+    win32gui.EnumChildWindows(handle, inner_callback, None)
+    
+
 if __name__ == '__main__':
     #TestObjectFromWindow()
     getAllIEChildrenWindows()
+    #getAllChildrenWindows()
