@@ -1,0 +1,7 @@
+[package]
+name = "test_rayon"
+version = "0.1.0"
+authors = ["joe"]
+
+[dependencies]
+rayon = "0.9.0"
