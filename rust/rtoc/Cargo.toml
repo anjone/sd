@@ -1,0 +1,11 @@
+[package]
+name = "rtoc"
+version = "0.1.0"
+authors = ["joe"]
+build = "build.rs"
+
+[dependencies]
+libc = "*"
+
+[build-dependencies]
+gcc = "*"
