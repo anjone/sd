@@ -1,0 +1,10 @@
+[package]
+name = "ctor"
+version = "0.1.0"
+authors = ["joe <anjone@126.com>"]
+
+[lib]
+name = "double_input"
+crate-type = ["staticlib"]
+
+[dependencies]
