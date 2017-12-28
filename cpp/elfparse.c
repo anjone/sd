@@ -16,9 +16,9 @@ int main(int argc, char **argv) {
     struct stat st;
     char *StringTable, *interp;
     
-    Elf32_Ehdr *ehdr;
-    Elf32_Phdr *phdr;
-    Elf32_Shdr *shdr;
+    Elf64_Ehdr *ehdr;
+    Elf64_Phdr *phdr;
+    Elf64_Shdr *shdr;
 
     if(argc < 2) {
         printf("Usage: %s <executable>\n", argv[0]);
@@ -41,9 +41,9 @@ int main(int argc, char **argv) {
         exit(-1);
     }
 
-    ehdr = (Elf32_Ehdr *) mem;
-    phdr = (Elf32_Phdr *) &mem[ehdr->e_phoff];
-    shdr = (Elf32_Shdr *) &mem[ehdr->e_shoff];
+    ehdr = (Elf64_Ehdr *) mem;
+    phdr = (Elf64_Phdr *) &mem[ehdr->e_phoff];
+    shdr = (Elf64_Shdr *) &mem[ehdr->e_shoff];
 
     if(mem[0] != 0x7f && strcmp(&mem[1], "ELF")) {
         fprintf(stderr, "%s is not ELF file.\n", argv[1]);
