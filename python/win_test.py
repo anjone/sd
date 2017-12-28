@@ -97,9 +97,32 @@ def inner_callback(chwnd, params):
 def getAllChildrenWindows():
     handle = win32gui.FindWindow('IEFrame', None)
     win32gui.EnumChildWindows(handle, inner_callback, None)
+
+
+from win32com.client import Dispatch 
+from win32gui import GetClassName
+
+def ieConnect():
+    ShellWindowsCLSID = '{9BA05972-F6A8-11CF-A442-00A0C90A8F39}'
+    ShellWindows = Dispatch(ShellWindowsCLSID)
+    print(ShellWindows)
+    print(ShellWindows.Count)
     
+    for i in range(ShellWindows.Count):
+        #print(GetClassName(ShellWindows[i]))
+        print(ShellWindows[i].Document)
+        print(ShellWindows[i])
+        print(ShellWindows[i].LocationName)
+        print(ShellWindows[i].LocationURL)
+        if(GetClassName(ShellWindows[i].HWND) == 'IEFrame'):
+            print(ShellWindows[i].Document)
+            print(ShellWindows[i].LocationName)
+            print(ShellWindows[i].LocationURL)
+            print(50 * '-')
+
 
 if __name__ == '__main__':
     #TestObjectFromWindow()
-    getAllIEChildrenWindows()
+    #getAllIEChildrenWindows()
     #getAllChildrenWindows()
+    ieConnect()
