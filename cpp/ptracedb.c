@@ -179,6 +179,7 @@ Elf64_Addr lookup_symbol(handle_t *h, const char *symname) {
     Elf64_Sym *symtab;
 
     for(i = 0; i < h->ehdr->e_shnum; i++) {
+        printf("type: %d name: %d value: %x\n", h->shdr[i].sh_type, h->shdr[i].sh_name, h->shdr[i].sh_offset);
         if(h->shdr[i].sh_type == SHT_SYMTAB) {
             strtab = (char *) &h->mem[h->shdr[h->shdr[i].sh_link].sh_offset];
             symtab = (Elf64_Sym *) &h->mem[h->shdr[i].sh_offset];
