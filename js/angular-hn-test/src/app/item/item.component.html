@@ -1,0 +1,30 @@
+  <div class="item-laptop">
+    <p>
+      <a class="title" href="">
+        {{item.title}}
+      </a>
+      <span *ngIf="item.domain" class="domain">({{item.domain}})</span>
+    </p>
+    <div class="subtext-laptop">
+      <span>
+        {{item.score}} points by
+        <a href="">{{item.user}}</a>
+      </span>
+      <span>
+        {{item.time_ago}}
+        <span> |
+          <a [routerLink]="['/item', item.id]">
+            <span *ngIf="item.comments_count !== 0">
+              {{item.comments_count}}
+              <span *ngIf="item.comments_count === 1">comment</span>
+              <span *ngIf="item.comments_count > 1">comments</span>
+            </span>
+            <span *ngIf="item.comments_count === 0">discuss</span>
+          </a>
+        </span>
+      </span>
+    </div>
+  </div>
+  <div class="item-mobile">
+
+  </div>
