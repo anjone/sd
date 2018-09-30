@@ -1,0 +1,8 @@
+[package]
+name = "ipnetwork-test"
+version = "0.1.0"
+authors = ["joe"]
+edition = "2018"
+
+[dependencies]
+ipnetwork = '0.12.7'

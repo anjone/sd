@@ -1,0 +1,1 @@
+{"rustc":7104363534288007600,"features":"[]","target":12927244838148538699,"profile":10840982997272152089,"path":1036222786711178230,"deps":[["ipnetwork v0.12.8","ipnetwork",3720445667244431237]],"local":[{"MtimeBased":[[1538294326,783389600],".fingerprint/ipnetwork-test-3166b51d8a16cccb/dep-bin-ipnetwork_test-3166b51d8a16cccb"]}],"rustflags":[],"edition":"Edition2018"}
