@@ -1,0 +1,9 @@
+[package]
+name = "trust-dns-test"
+version = "0.1.0"
+authors = ["joe <anjone@126.com>"]
+edition = "2018"
+
+[dependencies]
+trust-dns-resolver = "0.6.0"
+trust-dns = "0.12.0"
