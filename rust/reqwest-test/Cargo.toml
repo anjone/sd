@@ -1,0 +1,15 @@
+[package]
+name = "reqwest-test"
+version = "0.1.0"
+authors = ["joe <anjone@126.com>"]
+edition = "2018"
+
+[dependencies]
+serde_json = "1.0.32"
+serde = "1.0.80"
+serde_derive = "1.0.80"
+futures = "0.1.25"
+tokio-core = "0.1.17"
+[dependencies.reqwest]
+version = "0.8.6"
+futures = ["unstable"]
