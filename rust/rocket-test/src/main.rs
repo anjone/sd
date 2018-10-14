@@ -25,9 +25,16 @@ use self::db::DB;
 use self::post::{get_post, get_posts, create_post, delete_post, update_post};
 use self::models::*;
 use rocket_contrib::Json;
+use rocket_contrib::Template;
 use rocket::response::status::{Created, NoContent};
-use rocket::Rocket;
+use rocket::{Rocket, State};
 use self::error::ApiError;
+use std::collections::HashMap;
+use std::sync::atomic::{AtomicUsize, Ordering};
+
+struct VisitorCounter {
+    visitor_number: AtomicUsize,
+}
 
 #[get("/posts", format = "application/json")]
 fn posts_get(db: DB) -> Result<Json<Vec<Post>>, ApiError> {
@@ -60,8 +67,18 @@ fn post_delete(db: DB, id: i32) -> Result<NoContent, ApiError> {
     Ok(NoContent)
 }
 
+#[get("/webpage/<name>")]
+fn webpage(name: String, visitor: State<VisitorCounter>) -> Template {
+    let mut context = HashMap::new();
+    context.insert("name", name);
+    let current = visitor.visitor_number.fetch_add(1, Ordering::SeqCst);
+    context.insert("visitor_number", current.to_string());
+    Template::render("webpage", &context)
+}
+
 fn rocket() -> Rocket {
-    rocket::ignite().mount("/", routes![post_create, posts_get, post_delete, post_edit, post_get])
+    //rocket::ignite().mount("/", routes![post_create, posts_get, post_delete, post_edit, post_get])
+    rocket::ignite().manage(VisitorCounter{ visitor_number: AtomicUsize::new(1) }).mount("/", routes![post_create, posts_get, post_delete, post_edit, post_get, webpage]).attach(Template::fairing())
 }
 
 fn main() {
