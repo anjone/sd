@@ -1,9 +1,9 @@
 use diesel::result::Error;
 use diesel;
 use diesel::sqlite::SqliteConnection;
-use models::*;
+use super::models::*;
 use diesel::prelude::*;
-use schema::posts;
+use super::schema::posts;
 
 pub fn get_post(conn: &SqliteConnection, id: i32) -> Result<Post, Error> {
     posts::table.find(id).first::<Post>(conn)

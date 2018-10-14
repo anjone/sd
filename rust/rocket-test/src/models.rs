@@ -8,7 +8,7 @@ use serde_json;
 #[derive(Queryable)]
 #[derive(Serialize, Deserialize)]
 pub struct Post {
-    pub id: u32,
+    pub id: i32,
     pub title: String,
     pub body: String,
     pub pinned: bool,

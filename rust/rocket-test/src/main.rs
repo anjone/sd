@@ -21,13 +21,13 @@ mod post;
 mod models;
 mod error;
 
-use db::DB;
-use post::{get_post, get_posts, create_post, delete_post, update_post};
-use models::*;
+use self::db::DB;
+use self::post::{get_post, get_posts, create_post, delete_post, update_post};
+use self::models::*;
 use rocket_contrib::Json;
 use rocket::response::status::{Created, NoContent};
 use rocket::Rocket;
-use error::ApiError;
+use self::error::ApiError;
 
 #[get("/posts", format = "application/json")]
 fn posts_get(db: DB) -> Result<Json<Vec<Post>>, ApiError> {
@@ -56,7 +56,7 @@ fn post_edit(db: DB, id: i32, post: PostData) -> Result<Json<bool>, ApiError> {
 
 #[delete("/posts/<id>")]
 fn post_delete(db: DB, id: i32) -> Result<NoContent, ApiError> {
-    delete_post(db, id)?;
+    delete_post(&db, id)?;
     Ok(NoContent)
 }
 
