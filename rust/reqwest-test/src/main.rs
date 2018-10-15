@@ -7,7 +7,7 @@ extern crate tokio_core;
 
 use futures::Future;
 use tokio_core::reactor::Core;
-use reqwest::async::{Client, Decoder};
+use reqwest::r#async::{Client, Decoder};
 use std::mem;
 use std::io::{self, Cursor};
 use futures::Stream;
@@ -27,7 +27,7 @@ fn main() {
         body: "Try to write something".to_string(),
         pinned: true,
     };
-    let client = Client::new(&core.handle());
+    let client = Client::new();
     let res = client.post(url).json(&post).send().and_then(|res| {
         println!("{}", res.status());
         Ok(())
