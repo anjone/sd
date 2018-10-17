@@ -1,0 +1,9 @@
+[package]
+name = "key-exchange-test"
+version = "0.1.0"
+authors = ["joe <anjone@126.com>"]
+edition = "2018"
+
+[dependencies]
+ring = "0.12.1"
+untrusted = "0.5.1"
