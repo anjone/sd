@@ -1,0 +1,18 @@
+[package]
+name = "actix-cache-ws"
+version = "0.1.0"
+authors = ["joe <anjone@126.com>"]
+edition = "2018"
+
+[dependencies]
+actix = "0.7"
+actix-web = "0.7"
+env_logger = "0.6.1"
+failure = "0.1.5"
+futures = "0.1.26"
+log = "0.4.6"
+redis = "0.10.0"
+serde = "1.0.90"
+serde_derive = "1.0.90"
+serde_json = "1.0.39"
+serde_urlencoded = "0.5.5"
