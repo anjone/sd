@@ -1,0 +1,38 @@
+version: "3.6"
+
+services:
+  mq:
+    image: "rabbitmq:3"
+    restart: "always"
+    ports:
+      - "5672:5672"
+    #  - "15672:15672"
+
+  rabbit-actix-server:
+    build: 
+      context: "./rabbit-actix"
+      dockerfile: "Dockerfile_server"
+    environment:
+      - "RUST_LOG=rabbit_actix_server=debug"
+      - "RUST_BACKTRACE=1"
+    depends_on:
+      - "mq"
+    links:
+      - "mq"
+    ports:
+      - "8080:8080"
+
+  rabbit-actix-worker:
+    build: 
+      context: "./rabbit-actix"
+      dockerfile: "Dockerfile_worker"
+    environment:
+      - "RUST_LOG=rabbit_actix_worker=debug"
+      - "RUST_BACKTRACE=1"
+    depends_on:
+      - "mq"
+      - "rabbit-actix-server"
+    links:
+      - "mq"
+
+    

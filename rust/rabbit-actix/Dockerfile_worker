@@ -1,0 +1,23 @@
+FROM rust:nightly as builder
+
+RUN USER=root cargo new --lib rabbit-actix
+WORKDIR /rabbit-actix
+COPY ./Cargo.toml ./Cargo.toml
+# RUN cargo build
+
+RUN rm src/*.rs
+COPY ./src ./src
+COPY ./templates ./templates
+COPY ./build.rs ./build.rs
+# RUN rm -rf ./target/debug/deps/*
+RUN cargo build
+
+FROM buildpack-deps:stretch
+
+COPY --from=builder /rabbit-actix/target/debug/rabbit-actix-worker /app/
+
+COPY ./wait-for-it.sh /app/wait-for-it.sh
+RUN chmod +x /app/wait-for-it.sh
+
+# ENTRYPOINT [ "/app/rabbit-actix-worker" ]
+ENTRYPOINT [ "/bin/sh","-c","/app/wait-for-it.sh mq:5762 -t 30 -- /app/rabbit-actix-worker" ]
