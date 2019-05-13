@@ -2,11 +2,11 @@ version: "3.6"
 
 services:
   mq:
-    image: "rabbitmq:3"
+    image: "rabbitmq:3-management"
     restart: "always"
     ports:
       - "5672:5672"
-    #  - "15672:15672"
+      - "15672:15672"
 
   rabbit-actix-server:
     build: 
@@ -15,10 +15,12 @@ services:
     environment:
       - "RUST_LOG=rabbit_actix_server=debug"
       - "RUST_BACKTRACE=1"
+      - "MQ_ADDR=10.0.2.15:5672"
     depends_on:
       - "mq"
-    links:
-      - "mq"
+    #links:
+    #  - "mq"
+    network_mode: "host"
     ports:
       - "8080:8080"
 
@@ -29,10 +31,12 @@ services:
     environment:
       - "RUST_LOG=rabbit_actix_worker=debug"
       - "RUST_BACKTRACE=1"
+      - "MQ_ADDR=10.0.2.15:5672"
     depends_on:
       - "mq"
       - "rabbit-actix-server"
-    links:
-      - "mq"
+    #links:
+    #  - "mq"
+    network_mode: "host"
 
     

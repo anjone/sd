@@ -1,6 +1,6 @@
 FROM rust:nightly as builder
 
-RUN USER=root cargo new --bin rabbit-actix
+RUN USER=root cargo new --lib rabbit-actix
 WORKDIR /rabbit-actix
 COPY ./Cargo.toml ./Cargo.toml
 # RUN cargo build
@@ -21,4 +21,4 @@ RUN chmod +x /app/wait-for-it.sh
 
 EXPOSE 8080
 # ENTRYPOINT [ "/app/rabbit-actix-server" ]
-ENTRYPOINT [ "/bin/sh","-c","/app/wait-for-it.sh mq:5762 -t 30 -- /app/rabbit-actix-server" ]
+ENTRYPOINT [ "/bin/sh","-c","/app/wait-for-it.sh mq:5672 -t 30 -- /app/rabbit-actix-server" ]

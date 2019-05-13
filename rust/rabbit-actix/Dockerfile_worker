@@ -20,4 +20,4 @@ COPY ./wait-for-it.sh /app/wait-for-it.sh
 RUN chmod +x /app/wait-for-it.sh
 
 # ENTRYPOINT [ "/app/rabbit-actix-worker" ]
-ENTRYPOINT [ "/bin/sh","-c","/app/wait-for-it.sh mq:5762 -t 30 -- /app/rabbit-actix-worker" ]
+ENTRYPOINT [ "/bin/sh","-c","/app/wait-for-it.sh mq:5672 -t 30 -- /app/rabbit-actix-worker" ]
