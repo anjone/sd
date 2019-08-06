@@ -1,0 +1,10 @@
+python selenium hide chromeDriver console
+
+
+in Lib\site-packages\selenium\webdriver\common\services.py
+add creationflags=CREATE_NO_WINDOW (is a constant 134217728)
+example:
+
+    self.process = subprocess.Popen(cmd, env=self.env,
+                                        close_fds=platform.system() != 'Windows',
+                                        stdout=self.log_file, stderr=self.log_file, creationflags=CREATE_NO_WINDOW)
