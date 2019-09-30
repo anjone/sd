@@ -7,6 +7,16 @@ verify_ssl = true
 
 [packages]
 asyncio = "*"
+jupyter = "*"
+numpy = "*"
+pandas = "*"
+scipy = "*"
+matplotlib = "*"
+scikit-learn = "*"
+keras = "*"
+tensorflow = "*"
+cufflinks = "*"
+plotly = "*"
 
 [requires]
 python_version = "3.7"
