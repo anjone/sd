@@ -14,9 +14,11 @@ scipy = "*"
 matplotlib = "*"
 scikit-learn = "*"
 keras = "*"
-tensorflow = "*"
 cufflinks = "*"
 plotly = "*"
+cryptography = "*"
+gmpy2 = "*"
+tensorflow = "*"
 
 [requires]
 python_version = "3.7"
