@@ -1,0 +1,24 @@
+[[source]]
+name = "pypi"
+url = "http://mirrors.aliyun.com/pypi/simple"
+verify_ssl = true
+
+[dev-packages]
+
+[packages]
+asyncio = "*"
+jupyter = "*"
+numpy = "*"
+pandas = "*"
+scipy = "*"
+matplotlib = "*"
+scikit-learn = "*"
+keras = "*"
+cufflinks = "*"
+plotly = "*"
+cryptography = "*"
+gmpy2 = "*"
+tensorflow = "*"
+
+[requires]
+python_version = "3.7"
