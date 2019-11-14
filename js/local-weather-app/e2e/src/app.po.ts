@@ -8,4 +8,8 @@ export class AppPage {
   getTitleText() {
     return element(by.css('app-root .content span')).getText() as Promise<string>;
   }
+
+  getParagraphText() {
+    return element(by.css('app-root h1')).getText() as Promise<string>;
+  }
 }

@@ -12,15 +12,15 @@ interface ICurrentWeatherData {
       description: string
       icon: string
     }
-  ]
+  ];
   main: {
     temp: number
-  }
+  };
   sys: {
     country: string
-  }
-  dt: number
-  name: string
+  };
+  dt: number;
+  name: string;
 }
 
 export interface IWeatherService {
@@ -51,7 +51,7 @@ export class WeatherService implements IWeatherService {
       image: `https://openweathermap.org/img/w/${data.weather[0].icon}.png`,
       temperature: this.convertKelvinToFahrenheit(data.main.temp),
       description: data.weather[0].description,
-    }
+    };
   }
 
   private convertKelvinToFahrenheit(kelvin: number): number {
