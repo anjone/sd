@@ -11,7 +11,7 @@ export class WeatherServiceFake implements IWeatherService {
     image: '',
     temperature: 280.32,
     description: 'light intensity drizzle',
-  }
+  };
 
   public getCurrentWeather(city: string, country: string): Observable<ICurrentWeather> {
     return of(this.fakeWeather);
