@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-manager',
   template: `
-    <mat-toolbar color="accent">
+    <mat-toolbar color="accent" fxLayoutGap="8px">
       <a mat-button routerLink="/manager/home" routerLinkActive="active-link">Manager's Dashboard</a>
       <a mat-button routerLink="/manager/users" routerLinkActive="active-link">User Management</a>
       <a mat-button routerLink="/manager/receipts" routerLinkActive="active-link">Receipt Lookup</a>

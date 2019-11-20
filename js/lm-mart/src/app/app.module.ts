@@ -27,10 +27,6 @@ import { HttpClientModule } from '@angular/common/http';
     HttpClientModule,
     MaterialModule,
     FlexLayoutModule,
-    ManagerModule,
-    InventoryModule,
-    PosModule,
-    UserModule
   ],
   providers: [],
   bootstrap: [AppComponent]
