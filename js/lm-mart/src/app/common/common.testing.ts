@@ -3,19 +3,18 @@ import { MediaChange } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SafeResourceUrl, SafeValue } from '@angular/platform-browser';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { SecurityContext } from '@angular/platform-browser/src/security/dom_sanitization_service';
+import { SecurityContext } from '@angular/core';
 import { RouterTestingModule } from '@angular/router/testing';
 import { Observable, Subscription, of } from 'rxjs';
 
-//import { AuthService } from '../auth/auth.service';
-//import { AuthServiceFake } from '../auth/auth.service.fake';
+import { AuthService } from '../auth/auth.service';
+import { AuthServiceFake } from '../auth/auth.service.fake';
 import { MaterialModule } from '../material.module';
-//import { SharedComponentsModule } from '../shared-components.module';
-//import { UserService } from '../user/user/user.service';
-//import { UserServiceFake } from '../user/user/user.service.fake';
-//import { UiService } from './ui.service';
+// import { SharedComponentsModule } from '../shared-components.module';
+// import { UserService } from '../user/user/user.service';
+// import { UserServiceFake } from '../user/user/user.service.fake';
+import { UiService } from './ui.service';
 
-// tslint:disable-next-line:max-line-length
 
 const FAKE_SVGS = {
   lemon: '<svg><path id="lemon" name="lemon"></path></svg>',
