@@ -62,7 +62,7 @@ export class UserService extends CacheService implements IUserService {
     return updateResponse;
   }
 
-  getUsers(pageSize: number, searchText: string, pagesToSkip: number): Observable<IUsers> {
+  getUsers(pageSize: number, searchText = '', pagesToSkip = 0): Observable<IUsers> {
     return this.httpClient.get<IUsers>(
       `${environment.baseUrl}/v1/users`,
       {
