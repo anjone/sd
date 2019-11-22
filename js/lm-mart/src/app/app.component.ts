@@ -3,15 +3,15 @@ import { MatIconRegistry, MatSidenav } from '@angular/material';
 import { MediaObserver } from '@angular/flex-layout';
 import { DomSanitizer } from '@angular/platform-browser';
 import { AuthService } from './auth/auth.service';
-import { ObservableMediaFake } from './common/common.testing';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit{
-  @ViewChild('sidenav') public sideNav: MatSidenav;
+export class AppComponent implements OnInit {
+
+  @ViewChild('sidenav', { static: false }) public sideNav: MatSidenav;
 
   ngOnInit(): void {
     this.authService.authStatus.subscribe(authStatus => {
@@ -20,7 +20,6 @@ export class AppComponent implements OnInit{
       }
     });
   }
-  // title = 'lm-mart';
 
   constructor(
     iconRegistry: MatIconRegistry,

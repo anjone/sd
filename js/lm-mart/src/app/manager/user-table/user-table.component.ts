@@ -23,8 +23,8 @@ export class UserTableComponent implements OnInit, AfterViewInit {
 
   search = new FormControl('', OptionalTextValidation);
 
-  @ViewChild(MatPaginator) paginator: MatPaginator;
-  @ViewChild(MatSort) sort: MatSort;
+  @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
+  @ViewChild(MatSort, { static: false }) sort: MatSort;
 
   ngAfterViewInit(): void {
     this.dataSource.paginator = this.paginator;
