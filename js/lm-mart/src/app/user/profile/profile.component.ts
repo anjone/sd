@@ -9,7 +9,16 @@ import { $enum } from 'ts-enum-util';
 import { UserService } from '../user/user.service';
 import { AuthService } from 'src/app/auth/auth.service';
 import { IUser, IPhone } from '../user/user';
-import { EmailValidation, RequiredTextValidation, OneCharValidation, BirthDateValidation, OptionalTextValidation, USAZipCodeValidation, USAPhoneNumberValidation } from 'src/app/common/validations';
+import {
+  EmailValidation,
+  RequiredTextValidation,
+  OneCharValidation,
+  BirthDateValidation,
+  OptionalTextValidation,
+  USAZipCodeValidation,
+  USAPhoneNumberValidation
+} from 'src/app/common/validations';
+import { startWith, map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-profile',
@@ -40,9 +49,10 @@ export class ProfileComponent implements OnInit {
 
     if (!draftUser) {
       this.userService.getCurrentUser().subscribe(user => {
-
-      })
+        this.buildUserForm(user);
+      });
     }
+    this.buildUserForm(draftUser);
   }
 
   buildUserForm(user?: IUser) {
@@ -84,6 +94,11 @@ export class ProfileComponent implements OnInit {
       }),
       phones: this.formBuilder.array(this.buildPhoneArray(user ? user.phones : [])),
     });
+
+    this.states = this.userForm.get('address').get('state').valueChanges.pipe(
+      startWith(''),
+      map(value => USStateFilter(value))
+    );
   }
 
   addPhone() {
@@ -101,18 +116,18 @@ export class ProfileComponent implements OnInit {
       groups.push(this.buildPhoneFormControl(1));
     } else {
       phones.forEach(p => {
-        groups.push(this.buildPhoneFormControl(p.id, p.type, p.number));
+        groups.push(this.buildPhoneFormControl(p.id, p.type, p.phoneNumber));
       });
     }
 
     return groups;
   }
 
-  private buildPhoneFormControl(id, type?: string, number?: string) {
+  private buildPhoneFormControl(id, type?: string, phoneNumber?: string) {
     return this.formBuilder.group({
       id: [id],
       type: [type || '', Validators.required],
-      number: [number || '', USAPhoneNumberValidation],
+      phoneNumber: [phoneNumber || '', USAPhoneNumberValidation],
     });
   }
 
@@ -125,7 +140,10 @@ export class ProfileComponent implements OnInit {
   }
 
   async save(form: FormGroup) {
-    this.userService.updateUser(form.value).subscribe(res => this.buildUserForm(res), err => (this.userError = err));
+    this.userService.updateUser(form.value).subscribe(
+      res => this.buildUserForm(res),
+      err => (this.userError = err)
+    );
   }
 
 }

@@ -17,19 +17,34 @@
               placeholder="First Name"
               aria-label="First Name"
               formControlName="first"
-            >
+            />
             <mat-error
-              *ngIf="userForm.get('name').get('first').hasError('required')"
+              *ngIf="
+                userForm
+                  .get('name')
+                  .get('first')
+                  .hasError('required')
+              "
             >
               First Name is required
             </mat-error>
             <mat-error
-              *ngIf="userForm.get('name').get('first').hasError('minLength')"
+              *ngIf="
+                userForm
+                  .get('name')
+                  .get('first')
+                  .hasError('minLength')
+              "
             >
               Must be at least 2 characters
             </mat-error>
             <mat-error
-              *ngIf="userForm.get('name').get('first').hasError('maxLength')"
+              *ngIf="
+                userForm
+                  .get('name')
+                  .get('first')
+                  .hasError('maxLength')
+              "
             >
               Can't exceed 50 characters
             </mat-error>
@@ -40,32 +55,45 @@
               placeholder="MI"
               aria-label="Middle Initial"
               formControlName="middle"
-            >
-            <mat-error
-              *ngIf="userForm.get('name').get('middle').invalid"
-            >
-              Only initial
+            />
+            <mat-error *ngIf="userForm.get('name').get('middle').invalid">
+              Only inital
             </mat-error>
           </mat-form-field>
           <mat-form-field fxFlex="40%">
             <input
               matInput
-              placeholder="Last Name",
-              aria-label="Last Name",
+              placeholder="Last Name"
+              aria-label="Last Name"
               formControlName="last"
-            >
+            />
             <mat-error
-              *ngIf="userForm.get('name').get('last').hasError('required')"
+              *ngIf="
+                userForm
+                  .get('name')
+                  .get('last')
+                  .hasError('required')
+              "
             >
               Last Name is required
             </mat-error>
             <mat-error
-              *ngIf="userForm.get('name').get('last').hasError('minLength')"
+              *ngIf="
+                userForm
+                  .get('name')
+                  .get('last')
+                  .hasError('minLength')
+              "
             >
               Must be at least 2 characters
             </mat-error>
             <mat-error
-              *ngIf="userForm.get('name').get('last').hasError('maxLength')"
+              *ngIf="
+                userForm
+                  .get('name')
+                  .get('last')
+                  .hasError('maxLength')
+              "
             >
               Can't exceed 50 characters
             </mat-error>
@@ -79,7 +107,7 @@
               aria-label="Date of Birth"
               formControlName="dateOfBirth"
               [matDatepicker]="dateOfBirthPicker"
-            >
+            />
             <mat-hint *ngIf="userForm.get('dateOfBirth').touched">
               {{ this.age }} year(s) old
             </mat-hint>
@@ -88,9 +116,7 @@
               [for]="dateOfBirthPicker"
             ></mat-datepicker-toggle>
             <mat-datepicker #dateOfBirthPicker></mat-datepicker>
-            <mat-error
-              *ngIf="userForm.get('dateOfBirth').invalid"
-            >
+            <mat-error *ngIf="userForm.get('dateOfBirth').invalid">
               Date must be with the last 100 years
             </mat-error>
           </mat-form-field>
@@ -100,11 +126,9 @@
               placeholder="E-mail"
               aria-label="E-mail"
               formControlName="email"
-            >
+            />
             <mat-hint>Only your manager can update your e-mail.</mat-hint>
-            <mat-error
-              *ngIf="userForm.get('email').invalid"
-            >
+            <mat-error *ngIf="userForm.get('email').invalid">
               A valid E-mail is required
             </mat-error>
           </mat-form-field>
@@ -127,7 +151,9 @@
               </mat-radio-button>
             </mat-radio-group>
             <mat-error
-              *ngIf="userForm.get('role').hasError('required') && userForm.get('role').touched"
+              *ngIf="
+                userForm.get('role').hasError('required') && userForm.get('role').touched
+              "
             >
               <span class="mat-caption">Role is required</span>
             </mat-error>
@@ -157,19 +183,34 @@
               placeholder="Address Line 1"
               aria-label="Address Line 1"
               formControlName="line1"
-            >
+            />
             <mat-error
-              *ngIf="userForm.get('address').get('line1').hasError('required')"
+              *ngIf="
+                userForm
+                  .get('address')
+                  .get('line1')
+                  .hasError('required')
+              "
             >
               Line 1 is required
             </mat-error>
             <mat-error
-              *ngIf="userForm.get('address').get('line1').hasError('minLength')"
+              *ngIf="
+                userForm
+                  .get('address')
+                  .get('line1')
+                  .hasError('minLength')
+              "
             >
               Must be at least 2 characters
             </mat-error>
             <mat-error
-              *ngIf="userForm.get('address').get('line1').hasError('maxLength')"
+              *ngIf="
+                userForm
+                  .get('address')
+                  .get('line1')
+                  .hasError('maxLength')
+              "
             >
               Can't exceed 50 characters
             </mat-error>
@@ -187,15 +228,25 @@
               placeholder="Address Line 2"
               aria-label="Address Line 2"
               formControlName="line2"
-            >
+            />
             <mat-hint>Optional</mat-hint>
             <mat-error
-              *ngIf="userForm.get('address').get('line2').hasError('minLength')"
+              *ngIf="
+                userForm
+                  .get('address')
+                  .get('line2')
+                  .hasError('minLength')
+              "
             >
               Must be at least 2 characters
             </mat-error>
             <mat-error
-              *ngIf="userForm.get('address').get('line2').hasError('maxLength')"
+              *ngIf="
+                userForm
+                  .get('address')
+                  .get('line2')
+                  .hasError('maxLength')
+              "
             >
               Can't exceed 50 characters
             </mat-error>
@@ -208,24 +259,34 @@
           fxLayoutGap="10px"
         >
           <mat-form-field fxFlex="40%">
-            <input
-              matInput
-              placeholder="City"
-              aria-label="City"
-              formControlName="city"
-            >
+            <input matInput placeholder="City" aria-label="City" formControlName="city" />
             <mat-error
-              *ngIf="userForm.get('address').get('city').hasError('required')"
+              *ngIf="
+                userForm
+                  .get('address')
+                  .get('city')
+                  .hasError('required')
+              "
             >
               City is required
             </mat-error>
             <mat-error
-              *ngIf="userForm.get('address').get('city').hasError('minLength')"
+              *ngIf="
+                userForm
+                  .get('address')
+                  .get('city')
+                  .hasError('minLength')
+              "
             >
               Must be at least 2 characters
             </mat-error>
             <mat-error
-              *ngIf="userForm.get('address').get('city').hasError('maxLength')"
+              *ngIf="
+                userForm
+                  .get('address')
+                  .get('city')
+                  .hasError('maxLength')
+              "
             >
               Can't exceed 50 characters
             </mat-error>
@@ -238,14 +299,19 @@
               matInput
               formControlName="state"
               [matAutocomplete]="stateAuto"
-            >
+            />
             <mat-autocomplete #stateAuto="matAutocomplete">
               <mat-option *ngFor="let state of (states | async)" [value]="state.name">
                 {{ state.name }}
               </mat-option>
             </mat-autocomplete>
             <mat-error
-              *ngIf="userForm.get('address').get('state').hasError('required')"
+              *ngIf="
+                userForm
+                  .get('address')
+                  .get('state')
+                  .hasError('required')
+              "
             >
               State is required
             </mat-error>
@@ -256,10 +322,8 @@
               placeholder="Zip Code"
               aria-label="Zip Code"
               formControlName="zip"
-            >
-            <mat-error
-              *ngIf="userForm.get('address').get('zip').invalid"
-            >
+            />
+            <mat-error *ngIf="userForm.get('address').get('zip').invalid">
               A valid Zip Code is required
             </mat-error>
           </mat-form-field>
@@ -275,7 +339,7 @@
               *ngFor="let position of this.phonesArray.controls; let i = index"
               [formGroupName]="i"
             >
-              <mat-form-field fxFlex="100%">
+              <mat-form-field fxFlex="100px">
                 <mat-select placeholder="Type" formControlName="type">
                   <mat-option *ngFor="let type of this.PhoneTypes" [value]="type">
                     {{ type }}
@@ -286,12 +350,10 @@
                 <input
                   matInput
                   type="text"
-                  placeholder="Number"
-                  formControlName="number"
-                >
-                <mat-error
-                  *ngIf="this.phonesArray.controls[i].invalid"
-                >
+                  placeholder="Phone Number"
+                  formControlName="phoneNumber"
+                />
+                <mat-error *ngIf="this.phonesArray.controls[i].invalid">
                   A valid phone number is required
                 </mat-error>
               </mat-form-field>
@@ -322,7 +384,7 @@
         <app-view-user [user]="this.userForm.value"></app-view-user>
       </div>
       <div fxLayout="row" class="margin-top">
-        <button matStepperPrevious color="accent">Back</button>
+        <button mat-button matStepperPrevious color="accent">Back</button>
         <div class="flex-spacer"></div>
         <div *ngIf="userError" class="mat-caption error">{{ userError }}</div>
         <button mat-button color="warn" (click)="stepper.reset()">Reset</button>
