@@ -16,7 +16,7 @@ export class UiService {
 
   constructor(private snackBar: MatSnackBar, private dialog: MatDialog) { }
 
-  showToast(message: string, action = 'Close', config?: MatDialogConfig) {
+  showToast(message: string, action = 'Close', config?: MatSnackBarConfig) {
     this.snackBar.open(
       message,
       action,
@@ -32,7 +32,7 @@ export class UiService {
     okText = 'OK',
     cancelText?: string,
     customConfig?: MatDialogConfig
-  ): Observable<Boolean> {
+  ): Observable<boolean> {
     const dialogRef = this.dialog.open(
       SimpleDialogComponent,
       customConfig || {
@@ -62,7 +62,7 @@ export class UiService {
 })
 export class SimpleDialogComponent {
   constructor(
-    public dialogRef: MatDialogRef<SimpleDialogComponent, Boolean>,
+    public dialogRef: MatDialogRef<SimpleDialogComponent, boolean>,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {}
 }

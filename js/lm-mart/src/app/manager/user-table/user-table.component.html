@@ -45,6 +45,7 @@
           mat-button
           mat-icon-button
           [routerLink]="['/manager/users', { outlet: { detail: ['user', { userId: row.id }] } }]"
+          skipLocationChange
         >
           <mat-icon>visibility</mat-icon>
         </a>
