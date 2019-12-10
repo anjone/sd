@@ -1,0 +1,16 @@
+{
+  "name": "jstor-digest",
+  "version": "1.0.0",
+  "description": "js run rust lib",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "joe",
+  "repository": {},
+  "license": "MIT",
+  "dependencies": {
+    "ffi-napi": "^2.3.0",
+    "ref-napi": "^1.4.2"
+  }
+}

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
+        <script type="module">
+            import init, { digest, digest_attach } from "./digest.js";
+            async function run() {
+                await init();
+                const result = digest("Hello World");
+                console.log(`Hello World SHA256 = ${result}`);
+                digest_attach("Hello World", "sha_out")
+            }
+            run();
+        </script>
+    </head>
+    <body>
+        <h1>Hello World in SHA256 <span id="sha_out"></span></h1>
+    </body>
+</html>
