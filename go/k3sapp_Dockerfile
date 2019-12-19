@@ -1,0 +1,8 @@
+FROM golang AS builder
+ADD k3sapp.go /go/src/hello/app.go
+WORKDIR /go/src/hello
+RUN go build app.go
+
+FROM golang
+COPY --from=builder /go/src/hello/app /app
+CMD ["/app"]
