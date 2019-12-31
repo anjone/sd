@@ -1,8 +1,9 @@
 FROM golang AS builder
 ADD k3sapp.go /go/src/hello/app.go
 WORKDIR /go/src/hello
-RUN go build app.go
+RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo app.go
 
-FROM golang
+FROM alpine
+RUN apk --no-cache add ca-certificates
 COPY --from=builder /go/src/hello/app /app
 CMD ["/app"]
