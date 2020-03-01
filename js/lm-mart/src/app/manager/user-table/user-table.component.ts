@@ -1,9 +1,11 @@
 import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
-import { MatTableDataSource, MatPaginator, MatSort } from '@angular/material';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatPaginator} from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
 import { FormControl } from '@angular/forms';
 import { OptionalTextValidation } from 'src/app/common/validations';
 import { UserService } from 'src/app/user/user/user.service';
-import { merge, of } from 'rxjs';
+import { merge, of, from } from 'rxjs';
 import { debounceTime, startWith, switchMap, catchError, map } from 'rxjs/operators';
 import { IUser } from 'src/app/user/user/user';
 

@@ -1,5 +1,6 @@
 import { Component, ViewChild, OnInit } from '@angular/core';
-import { MatIconRegistry, MatSidenav } from '@angular/material';
+import { MatSidenav } from '@angular/material/sidenav';
+import { MatIconRegistry } from '@angular/material/icon';
 import { MediaObserver } from '@angular/flex-layout';
 import { DomSanitizer } from '@angular/platform-browser';
 import { AuthService } from './auth/auth.service';
